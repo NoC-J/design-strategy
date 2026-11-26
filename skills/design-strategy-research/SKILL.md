@@ -11,7 +11,7 @@ Goal: before anything is designed, produce an evidence-backed brief that says **
 Needs: web search, a page fetcher, a headless browser (Playwright via `scripts/capture.js`, or your own browser tool), file read/write and the ability to view images. Tool names below are generic; use your agent's equivalents. If something is missing, do that step manually with what you have and flag the gap in the report.
 
 ## Inputs (ask only for what's missing, default the rest)
-- Business: name, what it sells, to whom, **home market (country/region/city)**, price tier, existing site/brand assets. Infer the market from place names, currencies, brands or local competitors the user mentions and confirm it in one line. Never assume the US or any default market.
+- Business: name, what it sells, to whom, **home market (country/region/city)**, price tier, existing site/brand assets. **The market is required before any research starts.** Infer it from place names, currencies, brands, phone codes or local competitors the user mentions and confirm it in one line ("Assuming Zimbabwe, selling mainly inside Zimbabwe: correct?"). If it cannot be inferred, ask once and wait. Never assume the US or any default market, and never try to detect the user's location; use only what the user states. The user's location is not always the business's market (it may sell into other countries), so also ask which markets it sells into. Put the market (country/city) in every search query, because the search tool can skew towards US results.
 - Known competitors (optional) and admired sites (optional).
 - Deliverable being designed (site, landing page, deck, social, print).
 - Constraints: budget, timeline, tech stack, must-keep brand elements.
@@ -35,6 +35,7 @@ Search the way a customer in the **home market** would, not the way the business
 3. **Global / best-in-class** (any market, including other industries with the same customer behaviour): pick 2-4. These show what is possible and what customers may expect from the best sites they've seen.
 Also keep a short list of **indirect/substitutes** (different product, same problem; e.g. concrete or steel instead of timber) and note **who the people behind them are** where it informs strategy.
 Record for each: tier, why chosen, maturity (solo, local, funded, enterprise), website URL (or "none found"), other presence (Facebook, WhatsApp, directories). If a local competitor has no usable site, still profile their listing, social page and reviews; a missing website is itself a finding.
+Use `references/market-sources.md` for where to look in the home market (directories, marketplaces, social channels, tender portals, review sites) and fill the gaps it lists.
 Local context to capture too: language(s), currency and price display habits, how customers actually buy (phone, WhatsApp, visit, tender), delivery/logistics realities, standards and certifications that matter locally, device and bandwidth reality (mobile-first, slow connections), and payment methods.
 
 ### 3. Capture each site
