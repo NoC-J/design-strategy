@@ -7,6 +7,9 @@ description: Pre-design competitive and market research for a business's website
 
 Goal: before anything is designed, produce an evidence-backed brief that says **what the category looks like, what is missing, and where we win**. Every claim cites a source (URL, screenshot, extracted value). Distinguish **observed** (seen on the site) from **inferred** (your reasoning about why). Never invent competitor facts; if a page couldn't be loaded, say so.
 
+## Tools (any agent)
+Needs: web search, a page fetcher, a headless browser (Playwright via `scripts/capture.js`, or your own browser tool), file read/write and the ability to view images. Tool names below are generic; use your agent's equivalents. If something is missing, do that step manually with what you have and flag the gap in the report.
+
 ## Inputs (ask only for what's missing, default the rest)
 - Business: name, what it sells, to whom, location/market, price tier, existing site/brand assets.
 - Known competitors (optional) and admired sites (optional).
@@ -38,7 +41,7 @@ For each selected competitor, run the capture script (Playwright is preinstalled
 node scripts/capture.js https://example.com research/<slug>/competitors/<name>
 ```
 
-It saves desktop and mobile screenshots (fold + full page) and `tokens.json` (fonts, type sizes, colors, radii, shadows, CSS variables, CTAs, nav labels, headings). Then **look at the screenshots** (Read the PNGs) and use WebFetch/WebSearch for the pages the script can't see: pricing, about, key service/product page, a conversion flow, blog/resources, reviews. If a site blocks automation, use screenshots from search results/archive.org or fall back to WebFetch text, and flag the gap.
+It saves desktop and mobile screenshots (fold + full page) and `tokens.json` (fonts, type sizes, colors, radii, shadows, CSS variables, CTAs, nav labels, headings). Then **look at the screenshots** (open the PNGs with your image-viewing tool) and use WebFetch/WebSearch for the pages the script can't see: pricing, about, key service/product page, a conversion flow, blog/resources, reviews. If a site blocks automation, use screenshots from search results/archive.org or fall back to WebFetch text, and flag the gap.
 
 ### 3b. Gather UI/UX inspiration
 Read `references/inspiration-sources.md` and collect references from Land-book, Refero, Cosmos, Details and Spotted in Prod for the page types and flows being designed (hero, pricing, onboarding, checkout, etc.), including one adjacent industry. Log each with the output table there. Treat as inspiration for principles, not templates to copy.
@@ -83,11 +86,13 @@ Mine reviews, Reddit/forum threads, Q&A, 1-3 star reviews of competitors, and "a
 - **Prioritized next steps**: quick wins vs. build items.
 
 ### 9. Report
-Deliver the report as a **Claude Docs document** (Word-compatible), not just a local file:
-- Open the doc first with the Claude Docs `batch` tool (title, date, a pending block per section below), call `guide(items=["topic.index"])`, then fill each section as research completes. Tables go in as doc tables; link screenshots/source URLs.
-- When done, use the Claude Docs `export` tool to produce a `.docx` and give the user both the doc link and the .docx. Keep `research/<slug>/report.md` as a local backup.
-- If Claude Docs is unavailable, write `report.md`, convert with the docx skill, and say where the file is.
-- End the chat reply with a short summary and the link, never the whole report.
+Deliver the strategy as **one self-contained HTML file**: `research/<slug>/strategy.html` (inline CSS, inline SVG, local screenshots embedded or linked; opens in any browser, works offline, no build step). Read `references/report-design.md` first, start from `assets/template.html`, and follow it for design, illustrations and writing style.
+- Design the document for its reader and domain (a law firm gets a different look than a skate brand). Pick a look from the table in `report-design.md`; don't ship the template's default styling unchanged.
+- Use illustrations and visuals, not walls of text: positioning map, comparison tables, palette swatches, type specimens, screenshot cards, gap-ranking bars, a roadmap.
+- Write in plain language (see the writing rules in `report-design.md`).
+- Check it before delivering: open it with a headless browser at 1440px and 390px wide, view the screenshots, fix overflow, contrast and empty sections.
+- Other formats only if asked or if the agent has the tool: publish the HTML as a shareable page (e.g. an Artifact), or export Word/PDF (Claude Docs / docx skill / print-to-PDF from the browser).
+- End the chat reply with a short summary and the file path or link, never the whole report.
 
 Report contents:
 1. Executive summary (position, 5 key findings, top recommendations) – half a page.
@@ -109,4 +114,4 @@ Report contents:
 - Recommendations must trace back to a finding; delete any that don't.
 - Check recommended color pairs for WCAG AA contrast before proposing them.
 - Respect robots/terms; only view public pages, never log in or submit forms on competitor sites.
-- Keep the report scannable: tables and short bullets over prose.
+- Keep the report scannable: visuals, tables and short bullets over prose; simple words, no jargon without a one-line explanation.

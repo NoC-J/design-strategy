@@ -11,7 +11,7 @@ Used in SKILL.md step 3b. Goal: collect 8-15 references that show how the best p
 | Spotted in Prod (spottedinprod.com) | Design seen in shipped products by respected teams; what leading products actually do | Public pages; search `site:spottedinprod.com <topic>` |
 
 ## Access rules
-1. Try in this order: a connected MCP/connector for the source if one exists (check ToolSearch/ListConnectors/SearchMcpRegistry for "refero", "cosmos", "land-book") -> WebFetch on public pages -> WebSearch with `site:<domain> <keyword>` -> Playwright screenshots (`scripts/capture.js`) of the gallery or a specific entry.
+1. Try in this order: a connected MCP/connector for the source if one exists (check your agent's connector/MCP list for "refero", "cosmos", "land-book") -> WebFetch on public pages -> WebSearch with `site:<domain> <keyword>` -> Playwright screenshots (`scripts/capture.js`) of the gallery or a specific entry.
 2. Logged-in content: only through the user's own browser session (Claude in Chrome or the built-in browser), with the user's approval. Never ask for passwords or work around paywalls or login walls; if blocked, say what was unavailable.
 3. Respect each site's terms. Do not bulk-scrape or redistribute images. Reference by link and screenshot for internal analysis only; the report cites the URL.
 4. These sites change; if a URL or search pattern fails, search the web for the current one and note it.

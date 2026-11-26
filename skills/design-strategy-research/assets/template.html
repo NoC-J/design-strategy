@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design Strategy: [Business name]</title>
+<!-- STARTER ONLY. Change the :root tokens, fonts and layout to fit the business and domain (see references/report-design.md). Delete sections you don't need; keep the ones that tell the story. -->
+<style>
+:root{--bg:#fbfaf7;--surface:#fff;--ink:#1d2433;--muted:#5d6678;--line:#e4e1d8;--brand:#1f4fd8;--accent:#e8743b;--good:#176b47;--warn:#8a5a0b;--soft:#eef2ff;
+--font-head:Georgia,'Times New Roman',serif;--font-body:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;--radius:14px}
+@media (prefers-color-scheme:dark){:root{--bg:#12151c;--surface:#1b2030;--ink:#eef0f5;--muted:#a3abbd;--line:#2c3348;--soft:#1f2745;--brand:#7c9bff}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 var(--font-body)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+nav.top{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);z-index:5;overflow-x:auto;white-space:nowrap}
+nav.top a{display:inline-block;padding:12px 10px;color:var(--muted);text-decoration:none;font-size:14px}
+nav.top a:hover,nav.top a:focus{color:var(--brand)}
+header.hero{padding:72px 0 48px}
+.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:var(--muted)}
+h1,h2,h3{font-family:var(--font-head);line-height:1.2;margin:0 0 .4em}
+h1{font-size:clamp(2rem,5vw,3.4rem)} h2{font-size:clamp(1.5rem,3vw,2.1rem);margin-top:0}
+.lead{font-size:1.2rem;color:var(--muted);max-width:60ch}
+section{padding:48px 0;border-top:1px solid var(--line)}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.card h3{font-size:1.1rem}.num{font-size:2rem;font-family:var(--font-head);color:var(--brand)}
+.callout{background:var(--soft);border-left:4px solid var(--brand);padding:14px 18px;border-radius:8px;margin:20px 0}
+.pill{display:inline-block;font-size:12px;padding:2px 10px;border-radius:99px;color:#fff;background:var(--muted)}
+.pill.high{background:var(--good)}.pill.med{background:var(--warn)}.pill.low{background:var(--muted)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:15px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{position:sticky;top:0;background:var(--soft)} tbody tr:nth-child(even){background:color-mix(in srgb,var(--soft) 35%,transparent)}
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.sw{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--surface);font-size:13px}
+.sw i{display:block;height:70px}.sw span{display:block;padding:8px 10px}
+figure{margin:0}figure img{max-width:100%;border-radius:10px;border:1px solid var(--line)}figcaption{font-size:14px;color:var(--muted);margin-top:6px}
+svg{max-width:100%;height:auto}svg text{fill:var(--ink);font:13px var(--font-body)}
+.bar{height:12px;border-radius:6px;background:var(--brand)}
+footer{padding:40px 0;color:var(--muted);font-size:14px}
+@media print{nav.top{display:none}section{break-inside:avoid}}
+</style>
+</head>
+<body>
+<nav class="top" aria-label="Sections"><div class="wrap">
+<a href="#glance">At a glance</a><a href="#landscape">Landscape</a><a href="#compare">Compare</a><a href="#gaps">Gaps</a><a href="#direction">Our direction</a><a href="#marketing">Marketing</a><a href="#next">Next steps</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+<p class="eyebrow">Design strategy · [Month Year]</p>
+<h1>[One-sentence answer: "Be the ___ that ___."]</h1>
+<p class="lead">[Business] researched against [N] competitors and [M] inspiration sources. Here is what we found and what to do.</p>
+</div></header>
+
+<main class="wrap">
+<section id="glance"><h2>At a glance</h2>
+<div class="grid">
+<div class="card"><div class="num">1</div><h3>Our position</h3><p>[Plain one-liner]</p></div>
+<div class="card"><div class="num">2</div><h3>What everyone does</h3><p>[Top convention]</p></div>
+<div class="card"><div class="num">3</div><h3>What nobody does</h3><p>[Biggest gap]</p></div>
+<div class="card"><div class="num">4</div><h3>First move</h3><p>[Top action]</p></div>
+</div>
+<div class="callout"><strong>So what?</strong> [Why this matters for the business in one or two sentences.]</div>
+</section>
+
+<section id="landscape"><h2>[Takeaway heading: who we compete with]</h2>
+<div class="grid">
+<article class="card"><figure><img alt="[Competitor] homepage" src="competitors/name/desktop-fold.png"><figcaption>[Competitor], <a href="#">link</a></figcaption></figure>
+<p><strong>Verdict:</strong> [one line]</p><p>+ [strength]<br>− [weakness]</p></article>
+</div></section>
+
+<section id="compare"><h2>[Takeaway heading: how they compare]</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Area</th><th>Us (target)</th><th>Competitor A</th><th>Competitor B</th></tr></thead>
+<tbody><tr><td>Shows prices</td><td>Yes</td><td>No</td><td>No</td></tr>
+<tr><td>Mobile experience</td><td>Great</td><td>Poor</td><td>OK</td></tr></tbody></table></div>
+
+<h3 style="margin-top:32px">Why they designed it this way</h3>
+<div class="tablewrap"><table><thead><tr><th>What they did</th><th>Why (our guess)</th><th>How sure</th></tr></thead>
+<tbody><tr><td>[Dark hero, little text]</td><td>[Signals premium to higher-spend buyers]</td><td><span class="pill med">Medium</span></td></tr></tbody></table></div>
+
+<h3 style="margin-top:32px">Where everyone sits</h3>
+<figure><svg viewBox="0 0 520 360" role="img" aria-labelledby="pm"><title id="pm">Positioning map: price versus personality</title>
+<rect x="40" y="10" width="470" height="310" fill="none" stroke="currentColor" opacity=".25"/>
+<line x1="275" y1="10" x2="275" y2="320" stroke="currentColor" opacity=".2"/><line x1="40" y1="165" x2="510" y2="165" stroke="currentColor" opacity=".2"/>
+<text x="275" y="345" text-anchor="middle">Low price → High price</text><text x="14" y="165" transform="rotate(-90 14 165)" text-anchor="middle">Corporate → Personal</text>
+<circle cx="150" cy="90" r="9" fill="var(--muted)"/><text x="164" y="94">Competitor A</text>
+<circle cx="380" cy="240" r="9" fill="var(--muted)"/><text x="394" y="244">Competitor B</text>
+<circle cx="400" cy="70" r="12" fill="var(--accent)"/><text x="384" y="52" font-weight="700">Us: open space</text></svg>
+<figcaption>Empty space = chance to stand out.</figcaption></figure>
+</section>
+
+<section id="gaps"><h2>[Takeaway heading: what customers feel is missing]</h2>
+<div class="card"><p><strong>[Gap 1]</strong></p><div class="bar" style="width:90%"></div><p style="color:var(--muted)">"[Customer quote]", <a href="#">source</a></p></div>
+</section>
+
+<section id="direction"><h2>Our design direction</h2>
+<div class="swatches">
+<div class="sw"><i style="background:#1f4fd8"></i><span>Brand<br>#1f4fd8 · contrast 6.1:1</span></div>
+<div class="sw"><i style="background:#e8743b"></i><span>Accent<br>#e8743b</span></div>
+<div class="sw"><i style="background:#1d2433"></i><span>Text<br>#1d2433</span></div>
+</div>
+<p style="font-family:var(--font-head);font-size:1.8rem;margin:24px 0 0">Heading font sample. <span style="font-family:var(--font-body);font-size:1rem">Body font sample for reading.</span></p>
+</section>
+
+<section id="marketing"><h2>Marketing plan</h2>
+<div class="grid">
+<div class="card"><h3>Days 1-30</h3><ul><li>[Action]</li></ul></div>
+<div class="card"><h3>Days 31-60</h3><ul><li>[Action]</li></ul></div>
+<div class="card"><h3>Days 61-90</h3><ul><li>[Action]</li></ul></div>
+</div></section>
+
+<section id="next"><h2>Next steps and open questions</h2>
+<ul><li>☐ [Step]</li><li>❓ [Open question]</li></ul>
+</section>
+</main>
+<footer><div class="wrap">Sources, limits and method: [list with links]. Research date: [date]. Guesses are labelled as guesses.</div></footer>
+</body>
+</html>
