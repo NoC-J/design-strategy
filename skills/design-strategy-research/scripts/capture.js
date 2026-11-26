@@ -5,7 +5,9 @@ const fs = require('fs');
 const path = require('path');
 
 (async () => {
-  const [url, out] = process.argv.slice(2);
+  let [url, out] = process.argv.slice(2);
+  // proxies typically allow HTTPS only: upgrade plain http
+  if (url && url.startsWith('http://')) url = 'https://' + url.slice(7);
   if (!url || !out) { console.error('usage: node capture.js <url> <outDir>'); process.exit(1); }
   fs.mkdirSync(out, { recursive: true });
   const proxy = process.env.HTTPS_PROXY || process.env.https_proxy;
@@ -16,6 +18,9 @@ const path = require('path');
     try {
       await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
     } catch (e) { result[name + '_error'] = String(e.message).split('\n')[0]; }
+    await page.waitForTimeout(2500); // let JS-rendered sites paint
+    const textLen = await page.evaluate(() => document.body ? document.body.innerText.trim().length : 0).catch(() => 0);
+    if (textLen < 80) result[name + '_warning'] = 'page looks blank or blocked; do not judge design from it';
     await page.screenshot({ path: path.join(out, `${name}-fold.png`) });
     await page.screenshot({ path: path.join(out, `${name}-full.png`), fullPage: true }).catch(() => {});
     if (name === 'desktop') {

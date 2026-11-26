@@ -11,7 +11,7 @@ Goal: before anything is designed, produce an evidence-backed brief that says **
 Needs: web search, a page fetcher, a headless browser (Playwright via `scripts/capture.js`, or your own browser tool), file read/write and the ability to view images. Tool names below are generic; use your agent's equivalents. If something is missing, do that step manually with what you have and flag the gap in the report.
 
 ## Inputs (ask only for what's missing, default the rest)
-- Business: name, what it sells, to whom, location/market, price tier, existing site/brand assets.
+- Business: name, what it sells, to whom, **home market (country/region/city)**, price tier, existing site/brand assets. Infer the market from place names, currencies, brands or local competitors the user mentions and confirm it in one line. Never assume the US or any default market.
 - Known competitors (optional) and admired sites (optional).
 - Deliverable being designed (site, landing page, deck, social, print).
 - Constraints: budget, timeline, tech stack, must-keep brand elements.
@@ -27,12 +27,15 @@ Create `research/<business-slug>/` with: `competitors/<name>/` (screenshots + to
 One paragraph: offering, target customer(s), their job-to-be-done, buying trigger, purchase risk (what makes them hesitate), primary conversion goal (call, book, buy, lead). This drives every judgement later.
 
 ### 2. Map the landscape (WebSearch)
-Search the way a customer would, not the way the business describes itself: "best X in <city>", "X alternatives", "X vs Y", "<problem> solution", plus page-1 results, ads, directories, review sites (G2, Trustpilot, Google Maps, Yelp as relevant), Reddit/forums, and Awwwards/Behance/Dribbble for category design.
-Build a list of 8-15 candidates and sort into:
-- **Direct** (same offer, same customer) – pick 4-6 to analyze deeply.
-- **Indirect/substitute** (different solution, same problem) – pick 2-3.
-- **Aspirational/adjacent** (best-in-class in any space that shares the customer or interaction pattern) – pick 2-3.
-Record why each was chosen and their apparent size/maturity (solo, local, funded, enterprise). Also note who the people behind them are (founders, positioning, public talks/interviews) where it informs strategy.
+Search the way a customer in the **home market** would, not the way the business describes itself: "best X in <city/country>", "X suppliers <country>", "X alternatives", "X vs Y", "<problem> solution", plus page-1 results, ads, directories (local yellow pages, chambers, industry bodies, tender notices), review sites and maps listings, forums and social groups, and Awwwards/Behance/Dribbble for category design. Use local names the user gives (e.g. a regional brand) as seeds, then find who else is listed beside them.
+
+**The competitor set must always cover three tiers** (never only one):
+1. **Local** (same country/city, same customers): the businesses your customer would actually compare today, including small firms with weak sites, directory-only or social-only presences. Pick 4-6. These decide what "normal" and "good enough" look like where the customer lives.
+2. **Regional** (neighbouring countries / same continent, who sell or export into the home market or set standards there): pick 2-4.
+3. **Global / best-in-class** (any market, including other industries with the same customer behaviour): pick 2-4. These show what is possible and what customers may expect from the best sites they've seen.
+Also keep a short list of **indirect/substitutes** (different product, same problem; e.g. concrete or steel instead of timber) and note **who the people behind them are** where it informs strategy.
+Record for each: tier, why chosen, maturity (solo, local, funded, enterprise), website URL (or "none found"), other presence (Facebook, WhatsApp, directories). If a local competitor has no usable site, still profile their listing, social page and reviews; a missing website is itself a finding.
+Local context to capture too: language(s), currency and price display habits, how customers actually buy (phone, WhatsApp, visit, tender), delivery/logistics realities, standards and certifications that matter locally, device and bandwidth reality (mobile-first, slow connections), and payment methods.
 
 ### 3. Capture each site
 For each selected competitor, run the capture script (Playwright is preinstalled; don't reinstall):
@@ -41,7 +44,7 @@ For each selected competitor, run the capture script (Playwright is preinstalled
 node scripts/capture.js https://example.com research/<slug>/competitors/<name>
 ```
 
-It saves desktop and mobile screenshots (fold + full page) and `tokens.json` (fonts, type sizes, colors, radii, shadows, CSS variables, CTAs, nav labels, headings). Then **look at the screenshots** (open the PNGs with your image-viewing tool) and use WebFetch/WebSearch for the pages the script can't see: pricing, about, key service/product page, a conversion flow, blog/resources, reviews. If a site blocks automation, use screenshots from search results/archive.org or fall back to WebFetch text, and flag the gap.
+If a page opens blank, unstyled, or shows a bot-check or proxy error, **do not judge its design from that screenshot**: retry with a wait, try the https URL, or fall back to text and note "not verified visually". Blocked assets (CDN, fonts) can make a good site look broken; confirm before calling anything a weakness. It saves desktop and mobile screenshots (fold + full page) and `tokens.json` (fonts, type sizes, colors, radii, shadows, CSS variables, CTAs, nav labels, headings). Then **look at the screenshots** (open the PNGs with your image-viewing tool) and use WebFetch/WebSearch for the pages the script can't see: pricing, about, key service/product page, a conversion flow, blog/resources, reviews. If a site blocks automation, use screenshots from search results/archive.org or fall back to WebFetch text, and flag the gap.
 
 ### 3b. Gather UI/UX inspiration
 Read `references/inspiration-sources.md` and collect references from Land-book, Refero, Cosmos, Details and Spotted in Prod for the page types and flows being designed (hero, pricing, onboarding, checkout, etc.), including one adjacent industry. Log each with the output table there. Treat as inspiration for principles, not templates to copy.
@@ -97,10 +100,10 @@ Deliver the strategy as **one self-contained HTML file**: `research/<slug>/strat
 Report contents:
 1. Executive summary (position, 5 key findings, top recommendations) – half a page.
 2. Business frame & assumptions.
-3. Competitor set and selection rationale; inspiration board (references table).
+3. Competitor set grouped by Local / Regional / Global with selection rationale; local market context; inspiration board (references table).
 4. Comparison matrix (positioning, visuals, conversion, trust) with screenshots linked.
 5. Per-competitor profiles with "why" inferences.
-6. Synthesis (conventions, misses, mistakes, strengths, whitespace).
+6. Synthesis (conventions, misses, mistakes, strengths, whitespace), shown per tier and overall: what local firms do, what regional/global leaders do, and the distance between them (that distance is usually the opportunity).
 7. Customer gaps (ranked).
 8. Recommendations (positioning, design, content, marketing, next steps).
 9. Appendix: source list, extracted tokens, limitations (pages not loaded, stale data, small sample).

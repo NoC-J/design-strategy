@@ -16,17 +16,18 @@ Derive the actual palette/type from the research (the recommended direction), so
 2. **At a glance**: 4-6 cards: the position, top 3 findings, top 3 actions.
 3. **How to read this** (2 lines) + sticky mini nav.
 4. **The business and customer**: a persona card + "what stops them buying" list.
-5. **The landscape**: competitor cards (screenshot, one-line verdict, strength, weakness).
+5. **The landscape**: competitor cards in three labelled groups: **Local**, **Regional**, **Global** (screenshot, one-line verdict, strength, weakness). Mark any card whose screenshot could not be verified.
 6. **Side-by-side table**: sticky header; ticks/dots, not paragraphs.
 7. **Why they designed it that way**: for each decision, a row: *What they did → Why (our guess) → How sure*, with a confidence pill.
 8. **What everyone does** (conventions), **what nobody does** (whitespace), **what they get wrong** (with evidence).
-9. **Positioning map**: 2x2 SVG, competitors as dots, our target as a highlighted dot.
-10. **Gaps customers feel**: ranked horizontal bars (frequency x pain) with real customer quotes.
-11. **Inspiration board**: reference cards (source, screenshot link, what to borrow).
-12. **Our direction**: palette swatches with hex + contrast ratio, type specimen, layout sketch (simple SVG wireframe of hero/section order), tone-of-voice do/don't.
-13. **Marketing plan**: channels table, message pillars, first 30/60/90 days roadmap (SVG timeline or columns).
-14. **Risks and open questions**, **Next steps** checklist.
-15. **Sources and limits**.
+9. **Local vs best-in-class gap**: a simple row of scores or ticks per tier showing where local sites sit against regional and global leaders.
+10. **Positioning map**: 2x2 SVG, competitors as dots, our target as a highlighted dot.
+11. **Gaps customers feel**: ranked horizontal bars (frequency x pain) with real customer quotes.
+12. **Inspiration board**: reference cards (source, screenshot link, what to borrow).
+13. **Our direction**: palette swatches with hex + contrast ratio, type specimen, layout sketch (simple SVG wireframe of hero/section order), tone-of-voice do/don't.
+14. **Marketing plan**: channels table, message pillars, first 30/60/90 days roadmap (SVG timeline or columns).
+15. **Risks and open questions**, **Next steps** checklist.
+16. **Sources and limits**.
 
 ## 3. Visual components (all inline, no libraries)
 - Cards, pills (confidence: high green / medium amber / low grey), callout boxes ("So what?").
