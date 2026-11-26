@@ -8,7 +8,8 @@ const path = require('path');
   const [url, out] = process.argv.slice(2);
   if (!url || !out) { console.error('usage: node capture.js <url> <outDir>'); process.exit(1); }
   fs.mkdirSync(out, { recursive: true });
-  const browser = await chromium.launch();
+  const proxy = process.env.HTTPS_PROXY || process.env.https_proxy;
+  const browser = await chromium.launch(proxy ? { proxy: { server: proxy } } : {});
   const result = { url };
   for (const [name, viewport] of [['desktop', { width: 1440, height: 900 }], ['mobile', { width: 390, height: 844 }]]) {
     const page = await browser.newPage({ viewport, deviceScaleFactor: 1 });
