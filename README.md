@@ -12,3 +12,14 @@ Claude plugin for pre-design research: competitor analysis, design-system extrac
 
 ## Use
 Install the plugin, then ask: "Research the design strategy for <business> before we build the site."
+
+## Examples
+Three finished reports, made by running the skill. Open each `strategy.html` in a browser.
+
+| Example | Market | Look chosen |
+|---|---|---|
+| [Treated pole sales](examples/treated-poles-zimbabwe/strategy.html) | Zimbabwe (local), South Africa (regional), US (global) | Plain, sturdy trades look in earth tones |
+| [Independent skincare brand](examples/skincare-uk/strategy.html) | UK (local), Europe (regional), global | Warm oat and plum, soft serif |
+| [Small accountancy practice](examples/accountancy-uk/strategy.html) | UK (local), Europe (regional), US (global) | Calm, trusted teal and paper, narrow column |
+
+Each states what it could not check (bot checks, blocked pages, search-only evidence). Competitor screenshots are embedded for study only.

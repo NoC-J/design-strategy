@@ -15,10 +15,13 @@ const path = require('path');
   const result = { url };
   for (const [name, viewport] of [['desktop', { width: 1440, height: 900 }], ['mobile', { width: 390, height: 844 }]]) {
     const page = await browser.newPage({ viewport, deviceScaleFactor: 1 });
+    const blocked = new Set(); // hosts the network refused (CSS/fonts/images from these will be missing)
+    page.on('requestfailed', (r) => { const e = (r.failure() || {}).errorText || ''; if (/TUNNEL|PROXY|CONNECTION_(FAILED|REFUSED)/i.test(e)) { try { blocked.add(new URL(r.url()).hostname); } catch {} } });
     try {
       await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
     } catch (e) { result[name + '_error'] = String(e.message).split('\n')[0]; }
     await page.waitForTimeout(2500); // let JS-rendered sites paint
+    if (blocked.size) result[name + '_blocked_hosts'] = [...blocked];
     const textLen = await page.evaluate(() => document.body ? document.body.innerText.trim().length : 0).catch(() => 0);
     if (textLen < 80) result[name + '_warning'] = 'page looks blank or blocked; do not judge design from it';
     await page.screenshot({ path: path.join(out, `${name}-fold.png`) });
