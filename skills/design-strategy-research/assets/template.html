@@ -16,7 +16,7 @@ nav.top{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(-
 nav.top a{display:inline-block;padding:12px 10px;color:var(--muted);text-decoration:none;font-size:14px}
 nav.top a:hover,nav.top a:focus{color:var(--brand)}
 header.hero{padding:72px 0 48px}
-.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:var(--muted)}
+.eyebrow{font-size:14px;color:var(--muted);margin:0 0 12px}
 h1,h2,h3{font-family:var(--font-head);line-height:1.2;margin:0 0 .4em}
 h1{font-size:clamp(2rem,5vw,3.4rem)} h2{font-size:clamp(1.5rem,3vw,2.1rem);margin-top:0}
 .lead{font-size:1.2rem;color:var(--muted);max-width:60ch}
@@ -24,8 +24,8 @@ section{padding:48px 0;border-top:1px solid var(--line)}
 .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
 .card h3{font-size:1.1rem}.num{font-size:2rem;font-family:var(--font-head);color:var(--brand)}
-.callout{background:var(--soft);border-left:4px solid var(--brand);padding:14px 18px;border-radius:8px;margin:20px 0}
-.pill{display:inline-block;font-size:12px;padding:2px 10px;border-radius:99px;color:#fff;background:var(--muted)}
+.callout{background:var(--soft);border:1px solid var(--line);padding:16px 20px;border-radius:var(--radius);margin:20px 0}
+.pill{display:inline-block;font-size:12px;padding:4px 12px;border-radius:99px;color:#fff;background:var(--muted)}
 .pill.high{background:var(--good)}.pill.med{background:var(--warn)}.pill.low{background:var(--muted)}
 .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
 table{border-collapse:collapse;width:100%;min-width:640px;font-size:15px}
@@ -47,7 +47,7 @@ footer{padding:40px 0;color:var(--muted);font-size:14px}
 </div></nav>
 
 <header class="hero"><div class="wrap">
-<p class="eyebrow">Design strategy · [Month Year]</p>
+<p class="eyebrow">Design strategy / [Month Year]</p>
 <h1>[One-sentence answer: "Be the ___ that ___."]</h1>
 <p class="lead">[Business] researched against [N] competitors and [M] inspiration sources. Here is what we found and what to do.</p>
 </div></header>
