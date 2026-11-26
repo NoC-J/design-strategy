@@ -1,5 +1,7 @@
 # design-strategy
 
+Created by apxmedia.
+
 Claude plugin for pre-design research: competitor analysis, design-system extraction, gap finding, positioning and marketing strategy, with UI/UX inspiration from Land-book, Refero, Cosmos, Details and Spotted in Prod. Outputs a well-designed, plain-language HTML strategy document (Word/PDF on request).
 
 ## Contents
