@@ -1,6 +1,16 @@
 {
   "name": "design-strategy",
-  "version": "0.1.0",
-  "description": "Pre-design research: competitors, design systems, category gaps, positioning and marketing strategy, plus UI/UX inspiration from Land-book, Refero, Cosmos, Details and Spotted in Prod. Delivers a Claude Docs / Word report.",
-  "author": { "name": "chisepon0c" }
+  "version": "0.2.0",
+  "description": "Research a business's competitors before you design its site: design systems, gaps, positioning and marketing plan, delivered as a plain-language HTML strategy report. Bundles Crawl4AI for crawling competitor sites to markdown and screenshots.",
+  "author": {
+    "name": "chisepon0c"
+  },
+  "keywords": [
+    "design",
+    "research",
+    "competitors",
+    "strategy",
+    "crawler",
+    "screenshots"
+  ]
 }
